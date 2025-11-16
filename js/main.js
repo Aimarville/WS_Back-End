@@ -3,6 +3,9 @@ import { fetchJSON } from "./loaders.js";
 
 function differenceInDays(date1) {
     // YOUR CODE HERE
+    const date2 = new Date();
+    const diff = Math.abs(date2 - date1);
+    return Math.floor(diff / (1000 * 60 * 60 * 24));
 }
 
 let difference_In_Days = differenceInDays(new Date("01-10-2025"));
@@ -20,11 +23,15 @@ let game = {
 };
 
 function getSolution(players, solutionArray, difference_In_Days) {
- 
-    // YOUR CODE HERE 
+    // YOUR CODE HERE
+    const index = (difference_In_Days - 1) % solutionArray.length;
+    const solutionId = Number(solutionArray[index]);
+    const solutionPlayer = players.find(player => player.id === solutionId);
+    console.log(solutionPlayer);
+    return solutionPlayer;
 }
 
-Promise.all([fetchJSON("fullplayers25"), fetchJSON("solution25")]).then(
+Promise.all([fetchJSON("../json/fullplayers25.json"), fetchJSON("../json/solution25.json")]).then(
   (values) => {
 
     let solution;
