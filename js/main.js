@@ -58,7 +58,7 @@ Promise.all([fetchJSON("../json/fullplayers25.json"), fetchJSON("../json/solutio
     myInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
             let addRow = setupRows(game);
-            const jokalariId = parseInt(myInput.value, 10);;
+            const jokalariId = parseInt(myInput.value, 10);
             if (!isNaN(jokalariId)) {
                 addRow(jokalariId);
             }
