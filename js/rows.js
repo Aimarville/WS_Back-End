@@ -2,6 +2,7 @@
 // .... stringToHTML ....
 // .... setupRows .....
 import { stringToHTML, higher, lower } from './fragments.js';
+import { initState } from './stats.js';
 
 const delay = 350;
 const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate']
@@ -9,6 +10,7 @@ const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate']
 
 export let setupRows = function (game) {
 
+    let [state, updateState] = initState('WAYgameState', game.solution.id);
 
     function leagueToFlag(leagueId) {
         // YOUR CODE HERE
@@ -42,6 +44,25 @@ export let setupRows = function (game) {
         }
 
         return "incorrect";
+    }
+
+    function unblur(outcome) {
+        return new Promise( (resolve, reject) =>  {
+            setTimeout(() => {
+                document.getElementById("mistery").classList.remove("hue-rotate-180", "blur")
+                document.getElementById("combobox").remove()
+                let color, text
+                if (outcome=='success'){
+                    color =  "bg-blue-500"
+                    text = "Awesome"
+                } else {
+                    color =  "bg-rose-500"
+                    text = "The player was " + game.solution.name
+                }
+                document.getElementById("picbox").innerHTML += `<div class="animate-pulse fixed z-20 top-14 left-1/2 transform -translate-x-1/2 max-w-sm shadow-lg rounded-lg pointer-events-auto ring-1 ring-black ring-opacity-5 overflow-hidden ${color} text-white"><div class="p-4"><p class="text-sm text-center font-medium">${text}</p></div></div>`
+                resolve();
+            }, "2000")
+        })
     }
 
     function setContent(guess) {
@@ -85,10 +106,36 @@ export let setupRows = function (game) {
         playersNode.prepend(stringToHTML(child))
     }
 
+    function resetInput(){
+        // YOUR CODE HERE
+        let input = document.getElementById("myInput");
+        input.value = "";
+        input.placeholder = `Guess ${game.guesses.length}/8`;
+    }
+
     let getPlayer = function (playerId) {
         // YOUR CODE HERE
         return game.players.find(player => player.id === playerId);
     }
+
+    function gameEnded(lastGuess){
+        // YOUR CODE HERE
+        return (lastGuess == game.solution.id) || (game.guesses.length >= 8);
+    }
+
+    function success() {
+        unblur('success').then( () => {
+            console.log("Player guessed correctly!");
+        });
+    }
+
+    function gameOver() {
+        unblur('gameOver').then( () => {
+            console.log("Game over. No more guesses left.");
+        });
+    }
+
+    resetInput();
 
     return /* addRow */ function (playerId) {
 
@@ -96,6 +143,24 @@ export let setupRows = function (game) {
         console.log(guess)
 
         let content = setContent(guess)
+
+        game.guesses.push(playerId)
+        updateState(playerId)
+
+        resetInput();
+
+        if (gameEnded(playerId)) {
+            // updateStats(game.guesses.length);
+
+            if (playerId == game.solution.id) {
+                success();
+            }
+
+            if (game.guesses.length == 8) {
+                gameOver();
+            }
+        }
+
         showContent(content, guess)
     }
 }
