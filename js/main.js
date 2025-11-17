@@ -1,6 +1,7 @@
 import { folder, leftArrow } from "./fragments.js";
 import { fetchJSON } from "./loaders.js";
 import { setupRows } from './rows.js';
+import { autocomplete } from "./autocomplete.js";
 
 function differenceInDays(date1) {
     //YOUR CODE HERE
@@ -54,6 +55,8 @@ Promise.all([fetchJSON("../json/fullplayers25.json"), fetchJSON("../json/solutio
     document.getElementById("mistery").src = `https://playfootball.games/media/players/${game.solution.id % 32}/${game.solution.id}.png`;
 
     const myInput = document.getElementById('myInput');
+
+    autocomplete(document.getElementById("myInput"), game);
 
     myInput.addEventListener('keypress', (event) => {
         if (event.key === 'Enter') {
