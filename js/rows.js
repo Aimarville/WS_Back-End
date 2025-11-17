@@ -1,16 +1,18 @@
 // YOUR CODE HERE :
 // .... stringToHTML ....
 // .... setupRows .....
+import { stringToHTML } from './fragments.js';
 
 const delay = 350;
 const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate']
 
 
-let setupRows = function (game) {
+export let setupRows = function (game) {
 
 
     function leagueToFlag(leagueId) {
         // YOUR CODE HERE
+        return game.leagues[leagueId];
     }
 
 

@@ -1,5 +1,6 @@
 import { folder, leftArrow } from "./fragments.js";
 import { fetchJSON } from "./loaders.js";
+import { setupRows } from './rows.js';
 
 function differenceInDays(date1) {
     // YOUR CODE HERE
@@ -39,10 +40,30 @@ Promise.all([fetchJSON("../json/fullplayers25.json"), fetchJSON("../json/solutio
     [game.players, solution] = values;
 
     game.solution = getSolution(game.players, solution, difference_In_Days);
-    
+
+    game.leagues = {
+        564: "es1",
+        8:   "en1",
+        82:  "de1",
+        384: "it1",
+        301: "fr1"
+    };
+
     console.log(game.solution);
 
     document.getElementById("mistery").src = `https://playfootball.games/media/players/${game.solution.id % 32}/${game.solution.id}.png`;
-  
+
+    const myInput = document.getElementById('myInput');
+
+    myInput.addEventListener('keypress', (event) => {
+        if (event.key === 'Enter') {
+            let addRow = setupRows(game);
+            const jokalariId = parseInt(myInput.value, 10);;
+            if (!isNaN(jokalariId)) {
+                addRow(jokalariId);
+            }
+            myInput.value = '';
+        }
+    });
   }
 );
