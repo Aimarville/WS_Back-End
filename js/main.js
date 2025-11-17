@@ -3,7 +3,7 @@ import { fetchJSON } from "./loaders.js";
 import { setupRows } from './rows.js';
 
 function differenceInDays(date1) {
-    // YOUR CODE HERE
+    //YOUR CODE HERE
     const date2 = new Date();
     const diff = Math.abs(date2 - date1);
     return Math.floor(diff / (1000 * 60 * 60 * 24));
