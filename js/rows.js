@@ -1,7 +1,7 @@
 // YOUR CODE HERE :
 // .... stringToHTML ....
 // .... setupRows .....
-import { stringToHTML } from './fragments.js';
+import { stringToHTML, higher, lower } from './fragments.js';
 
 const delay = 350;
 const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate']
@@ -45,12 +45,20 @@ export let setupRows = function (game) {
     }
 
     function setContent(guess) {
+        let ageClass = check('birthdate', guess.birthdate);
+        let ageDisplay = getAge(guess.birthdate);
+        if (ageClass === 'higher') {
+            ageDisplay += ` ${higher}`;
+        } else if (ageClass === 'lower') {
+            ageDisplay += ` ${lower}`;
+        }
+
         return [
             `<img src="https://playfootball.games/media/nations/${guess.nationality.toLowerCase()}.svg" alt="" style="width: 60%;">`,
             `<img src="https://playfootball.games/media/competitions/${leagueToFlag(guess.leagueId)}.png" alt="" style="width: 60%;">`,
             `<img src="https://cdn.sportmonks.com/images/soccer/teams/${guess.teamId % 32}/${guess.teamId}.png" alt="" style="width: 60%;">`,
             `${guess.position}`,
-            `${getAge(guess.birthdate)}`
+            ageDisplay
         ]
     }
 
