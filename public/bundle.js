@@ -29,7 +29,7 @@ function autocomplete(inp, game) {
         /*for each item in the array...*/
         for (i = 0; i < players.length; i++) {
             //
-            const matches = match(players[i].name, val); // busca en cualquier parte
+            const matches = match(players[i].name, val, { insideWords: true }); // busca en cualquier parte
             if (matches.length > 0) { // si hay coincidencias
                 const parts = parse(players[i].name, matches); // divide el nombre para resaltar coincidencias
 
