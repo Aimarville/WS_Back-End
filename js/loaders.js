@@ -1,5 +1,3 @@
-export { fetchJSON };
-
 async function fetchJSON(what) {
     // YOUR CODE HERE
     const response = await fetch(what);
@@ -9,3 +7,4 @@ async function fetchJSON(what) {
     const data = await response.json(); // Convierte JSON
     return data;
 }
+module.exports = { fetchJSON };

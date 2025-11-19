@@ -1,7 +1,6 @@
-import {setupRows} from "./rows.js";
-
-export {autocomplete}
-
+const match = require('./match.js');
+const parse = require('./parse.js');
+const { setupRows } = require('./rows.js');
 function autocomplete(inp, game) {
 
     let addRow = setupRows(game);
@@ -28,20 +27,25 @@ function autocomplete(inp, game) {
         this.parentNode.appendChild(a);
         /*for each item in the array...*/
         for (i = 0; i < players.length; i++) {
-            /*check if the item starts with the same letters as the text field value:*/
-            if (players[i].name.substr(0, val.length).toUpperCase() == val.toUpperCase()) {
+            //
+            const matches = match(players[i].name, val); // busca en cualquier parte
+            if (matches.length > 0) { // si hay coincidencias
+                const parts = parse(players[i].name, matches); // divide el nombre para resaltar coincidencias
 
                 b = document.createElement("DIV");
                 b.classList.add('flex', 'items-start', 'gap-x-3', 'leading-tight', 'uppercase', 'text-sm');
                 b.innerHTML = `<img src="https://cdn.sportmonks.com/images/soccer/teams/${players[i].teamId % 32}/${players[i].teamId}.png"  width="28" height="28">`;
 
-                /*make the matching letters bold:*/
-                b.innerHTML += `<div class='self-center'>
-                                    <span class='font-bold'>${players[i].name.substr(0, val.length)}</span><span class>${players[i].name.substr(val.length)}</span>
-                                    <input type='hidden' name='name' value='${players[i].name}'>
-                                    <input type='hidden' name='id' value='${players[i].id}'>
-                                </div>`;
+                b.innerHTML += `<div class='self-center'>`;
+                let nameHTML = parts.map(part => {
+                    return part.highlight ? `<b>${part.text}</b>` : part.text;
+                }).join(''); // unimos todo sin separar en spans
 
+                b.innerHTML += `
+                    <span class='self-center'>${nameHTML}</span>
+                    <input type='hidden' name='name' value='${players[i].name}'>
+                    <input type='hidden' name='id' value='${players[i].id}'>
+                </div>`;
                 /*execute a function when someone clicks on the item value (DIV element):*/
                 b.addEventListener("click", function (e) {
                     /*insert the value for the autocomplete text field:*/
@@ -121,3 +125,4 @@ function autocomplete(inp, game) {
         closeAllLists(e.target);
     });
 }
+module.exports = {autocomplete}

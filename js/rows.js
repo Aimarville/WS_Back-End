@@ -1,14 +1,14 @@
 // YOUR CODE HERE :
 // .... stringToHTML ....
 // .... setupRows .....
-import { stringToHTML, higher, lower, headless, toggle, stats } from './fragments.js';
-import { initState, updateStats } from './stats.js';
+const { stringToHTML, higher, lower, headless, toggle, stats } = require('./fragments.js');
+const { initState, updateStats } = require('./stats.js');
 
 const delay = 350;
 const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate']
 
 
-export let setupRows = function (game) {
+let setupRows = function (game) {
 
     let [state, updateState] = initState('WAYgameState', game.solution.id);
 
@@ -210,3 +210,4 @@ export let setupRows = function (game) {
         showContent(content, guess)
     }
 }
+module.exports = { setupRows };

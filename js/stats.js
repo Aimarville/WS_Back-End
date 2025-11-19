@@ -1,5 +1,3 @@
-export {initState, getStats, updateStats}
-
 let initState = function(what, solutionId) {
     // YOUR CODE HERE
     let saved = localStorage.getItem(what);
@@ -67,3 +65,5 @@ function updateStats(t) {
 }
 
 let gamestats = getStats('gameStats');
+
+module.exports= {initState, getStats, updateStats}
