@@ -1,0 +1,7 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const parse = require('autosuggest-highlight/parse');
+module.exports = parse;
+
+},{"autosuggest-highlight/parse":2}],2:[function(require,module,exports){
+!function(t,e){"object"==typeof exports&&"object"==typeof module?module.exports=e():"function"==typeof define&&define.amd?define([],e):"object"==typeof exports?exports.AutosuggestHighlightParse=e():t.AutosuggestHighlightParse=e()}(this,(()=>{return t={705:t=>{t.exports=function(t,e){const h=[];return 0===e.length?h.push({text:t,highlight:!1}):e[0][0]>0&&h.push({text:t.slice(0,e[0][0]),highlight:!1}),e.forEach(((i,o)=>{const s=i[0],r=i[1];h.push({text:t.slice(s,r),highlight:!0}),o===e.length-1?r<t.length&&h.push({text:t.slice(r,t.length),highlight:!1}):r<e[o+1][0]&&h.push({text:t.slice(r,e[o+1][0]),highlight:!1})})),h}}},e={},function h(i){var o=e[i];if(void 0!==o)return o.exports;var s=e[i]={exports:{}};return t[i](s,s.exports,h),s.exports}(705);var t,e}));
+},{}]},{},[1]);
