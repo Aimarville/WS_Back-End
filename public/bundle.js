@@ -472,9 +472,9 @@ let setupRows = function (game) {
             showContent(content, guess);
         }
         if (gameEnded(playerId)) {
-            if (playerId == state.solution.id) {
-                break
+            if (playerId == state.solution) {
                 success();
+                break
             }
         }
     }
