@@ -128,7 +128,7 @@ let setupRows = function (game) {
         // YOUR CODE HERE
         let input = document.getElementById("myInput");
         input.value = "";
-        input.placeholder = `Guess ${game.guesses.length}/8`;
+        input.placeholder = `Guess ${state.guesses.length}/8`;
     }
 
     let getPlayer = function (playerId) {
@@ -152,6 +152,23 @@ let setupRows = function (game) {
     }
 
     resetInput();
+
+    for (let playerId of state.guesses) {
+        let guess = getPlayer(playerId);
+        if (guess) {
+            let content = setContent(guess);
+            showContent(content, guess);
+        }
+        if (gameEnded(playerId)) {
+            if (playerId == state.solution.id) {
+                break
+                success();
+            }
+        }
+    }
+    if (state.guesses.length >= 8) {
+        gameOver();
+    }
 
     return /* addRow */ function (playerId) {
 

@@ -4,6 +4,13 @@ let initState = function(what, solutionId) {
     let state;
     if (saved) {
         state = JSON.parse(saved);
+        if (state.solution !== solutionId) {
+            state = {
+                guesses: [],
+                solution: solutionId
+            };
+        }
+        localStorage.setItem(what, JSON.stringify(state));
     } else {
         state = {
             guesses: [],
