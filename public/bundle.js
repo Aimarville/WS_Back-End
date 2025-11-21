@@ -317,7 +317,7 @@ const { stringToHTML, higher, lower, headless, toggle, stats } = require('./frag
 const { initState, updateStats } = require('./stats.js');
 
 const delay = 350;
-const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate']
+const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate', 'number']
 
 
 let setupRows = function (game) {
@@ -343,13 +343,21 @@ let setupRows = function (game) {
     }
 
     let check = function (theKey, theValue) {
-        if (theKey === "birthdate") {
-            const solutionAge = getAge(game.solution[theKey]);
-            const userAge = getAge(theValue);
+        if (theKey === "birthdate" || theKey === 'number') {
+            let solution;
+            let user;
+            if (theKey === "birthdate") {
+                solution = getAge(game.solution[theKey]);
+                user = getAge(theValue);
+            }
+            if (theKey === 'number'){
+                solution = game.solution[theKey];
+                user = theValue;
+            }
 
-            if (solutionAge === userAge) return "correct";
-            if (solutionAge > userAge) return "higher";
-            if (solutionAge < userAge) return "lower";
+            if (solution === user) return "correct";
+            if (solution > user) return "higher";
+            if (solution < user) return "lower";
         }
         if (game.solution[theKey] === theValue) {
             return "correct";
@@ -403,13 +411,21 @@ let setupRows = function (game) {
         } else if (ageClass === 'lower') {
             ageDisplay += ` ${lower}`;
         }
+        let numberClass = check('number', guess.number);
+        let numberDisplay = '#' + guess.number;
+        if (numberClass === 'higher') {
+            numberDisplay += ` ${higher}`;
+        } else if (numberClass === 'lower') {
+            numberDisplay += ` ${lower}`;
+        }
 
         return [
             `<img src="https://playfootball.games/media/nations/${guess.nationality.toLowerCase()}.svg" alt="" style="width: 60%;">`,
             `<img src="https://playfootball.games/media/competitions/${leagueToFlag(guess.leagueId)}.png" alt="" style="width: 60%;">`,
             `<img src="https://cdn.sportmonks.com/images/soccer/teams/${guess.teamId % 32}/${guess.teamId}.png" alt="" style="width: 60%;">`,
             `${guess.position}`,
-            ageDisplay
+            ageDisplay,
+            numberDisplay
         ]
     }
 
@@ -417,8 +433,8 @@ let setupRows = function (game) {
         let fragments = '', s = '';
         for (let j = 0; j < content.length; j++) {
             s = "".concat(((j + 1) * delay).toString(), "ms")
-            fragments += `<div class="w-1/5 shrink-0 flex justify-center ">
-                            <div class="mx-1 overflow-hidden w-full max-w-2 shadowed font-bold text-xl flex aspect-square rounded-full justify-center items-center bg-slate-400 text-white ${check(attribs[j], guess[attribs[j]]) == 'correct' ? 'bg-green-500' : ''} opacity-0 fadeInDown" style="max-width: 60px; animation-delay: ${s};">
+            fragments += `<div class="w-1/6 shrink-0 flex justify-center ">
+                            <div class="mx-1 overflow-hidden w-full w-14 h-14 shadowed font-bold text-xl flex aspect-square rounded-full justify-center items-center bg-slate-400 text-white ${check(attribs[j], guess[attribs[j]]) == 'correct' ? 'bg-green-500' : ''} opacity-0 fadeInDown" style="max-width: 60px; animation-delay: ${s};">
                                 ${content[j]}
                             </div>
                          </div>`

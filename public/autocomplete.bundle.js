@@ -232,7 +232,7 @@ const { stringToHTML, higher, lower, headless, toggle, stats } = require('./frag
 const { initState, updateStats } = require('./stats.js');
 
 const delay = 350;
-const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate']
+const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate', 'number']
 
 
 let setupRows = function (game) {
@@ -258,13 +258,21 @@ let setupRows = function (game) {
     }
 
     let check = function (theKey, theValue) {
-        if (theKey === "birthdate") {
-            const solutionAge = getAge(game.solution[theKey]);
-            const userAge = getAge(theValue);
+        if (theKey === "birthdate" || theKey === 'number') {
+            let solution;
+            let user;
+            if (theKey === "birthdate") {
+                solution = getAge(game.solution[theKey]);
+                user = getAge(theValue);
+            }
+            if (theKey === 'number'){
+                solution = game.solution[theKey];
+                user = theValue;
+            }
 
-            if (solutionAge === userAge) return "correct";
-            if (solutionAge > userAge) return "higher";
-            if (solutionAge < userAge) return "lower";
+            if (solution === user) return "correct";
+            if (solution > user) return "higher";
+            if (solution < user) return "lower";
         }
         if (game.solution[theKey] === theValue) {
             return "correct";
@@ -318,13 +326,21 @@ let setupRows = function (game) {
         } else if (ageClass === 'lower') {
             ageDisplay += ` ${lower}`;
         }
+        let numberClass = check('number', guess.number);
+        let numberDisplay = guess.number;
+        if (numberClass === 'higher') {
+            numberDisplay += ` ${higher}`;
+        } else if (numberClass === 'lower') {
+            numberDisplay += ` ${lower}`;
+        }
 
         return [
             `<img src="https://playfootball.games/media/nations/${guess.nationality.toLowerCase()}.svg" alt="" style="width: 60%;">`,
             `<img src="https://playfootball.games/media/competitions/${leagueToFlag(guess.leagueId)}.png" alt="" style="width: 60%;">`,
             `<img src="https://cdn.sportmonks.com/images/soccer/teams/${guess.teamId % 32}/${guess.teamId}.png" alt="" style="width: 60%;">`,
             `${guess.position}`,
-            ageDisplay
+            ageDisplay,
+            numberDisplay
         ]
     }
 
@@ -355,7 +371,7 @@ let setupRows = function (game) {
         // YOUR CODE HERE
         let input = document.getElementById("myInput");
         input.value = "";
-        input.placeholder = `Guess ${game.guesses.length}/8`;
+        input.placeholder = `Guess ${state.guesses.length}/8`;
     }
 
     let getPlayer = function (playerId) {
@@ -379,6 +395,23 @@ let setupRows = function (game) {
     }
 
     resetInput();
+
+    for (let playerId of state.guesses) {
+        let guess = getPlayer(playerId);
+        if (guess) {
+            let content = setContent(guess);
+            showContent(content, guess);
+        }
+        if (gameEnded(playerId)) {
+            if (playerId == state.solution) {
+                success();
+                break
+            }
+        }
+    }
+    if (state.guesses.length >= 8) {
+        gameOver();
+    }
 
     return /* addRow */ function (playerId) {
 
@@ -445,6 +478,13 @@ let initState = function(what, solutionId) {
     let state;
     if (saved) {
         state = JSON.parse(saved);
+        if (state.solution !== solutionId) {
+            state = {
+                guesses: [],
+                solution: solutionId
+            };
+        }
+        localStorage.setItem(what, JSON.stringify(state));
     } else {
         state = {
             guesses: [],
