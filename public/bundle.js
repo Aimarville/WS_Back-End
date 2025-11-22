@@ -466,7 +466,7 @@ adow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full s
 
             function gameEnded(lastGuess){
                 // YOUR CODE HERE
-                return (lastGuess == state.solution.id) || (state.guesses.length >= 8);
+                return (lastGuess == state.solution) || (state.guesses.length >= 8);
             }
 
             async function success() {
@@ -512,7 +512,7 @@ adow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-sm sm:w-full s
                 if (gameEnded(playerId)) {
                     updateStats(state.guesses.length);
 
-                    if (playerId == game.solution.id) {
+                    if (playerId == state.solution) {
                         success();
                     }
 

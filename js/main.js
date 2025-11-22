@@ -29,7 +29,6 @@ function getSolution(players, solutionArray, difference_In_Days) {
     const index = (difference_In_Days - 1) % solutionArray.length;
     const solutionId = Number(solutionArray[index]);
     const solutionPlayer = players.find(player => player.id === solutionId);
-    console.log(solutionPlayer);
     return solutionPlayer;
 }
 

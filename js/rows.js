@@ -190,7 +190,7 @@ let setupRows = function (game) {
         if (gameEnded(playerId)) {
             updateStats(state.guesses.length);
 
-            if (playerId == game.solution.id) {
+            if (playerId == state.solution) {
                 success();
             }
 
