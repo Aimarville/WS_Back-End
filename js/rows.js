@@ -1,13 +1,3 @@
-// YOUR CODE HERE :
-// .... stringToHTML ....
-// .... setupRows .....
-const { stringToHTML, higher, lower, headless, toggle, stats } = require('./fragments.js');
-const { initState, updateStats } = require('./stats.js');
-
-const delay = 350;
-const attribs = ['nationality', 'leagueId', 'teamId', 'position', 'birthdate', 'number']
-
-
 let setupRows = function (game) {
 
     let [state, updateState] = initState('WAYgameState', game.solution.id);
@@ -154,7 +144,7 @@ let setupRows = function (game) {
 
     function gameEnded(lastGuess){
         // YOUR CODE HERE
-        return (lastGuess == game.solution.id) || (game.guesses.length >= 8);
+        return (lastGuess == state.solution.id) || (state.guesses.length >= 8);
     }
 
     async function success() {
@@ -193,19 +183,18 @@ let setupRows = function (game) {
 
         let content = setContent(guess)
 
-        game.guesses.push(playerId)
         updateState(playerId)
 
         resetInput();
 
         if (gameEnded(playerId)) {
-            updateStats(game.guesses.length);
+            updateStats(state.guesses.length);
 
             if (playerId == game.solution.id) {
                 success();
             }
 
-            if (game.guesses.length == 8) {
+            if (state.guesses.length == 8) {
                 gameOver();
             }
 
