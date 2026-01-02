@@ -5,7 +5,6 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 
 const writepath = path.join(__dirname, '../../../public/images/teams');
-console.log(writepath);
 
 async function main() {
     try {
@@ -16,13 +15,9 @@ async function main() {
         const content = await fsP.readFile(path.join(__dirname, "teamIDs.txt"), "utf8");
         const data = content.split("\r\n");
 
-        console.log(data);
-
         data.forEach( (elem, idx) => {
             const team = elem.replace(/^\uFEFF/, '').trim();
             if (!team) return;
-
-            console.log(`${team}`);
 
             const e1 = team % 32;
 
