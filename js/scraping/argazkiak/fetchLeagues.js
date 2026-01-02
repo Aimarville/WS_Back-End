@@ -15,6 +15,8 @@ async function main() {
         const data = content.split("\r\n");
 
         data.forEach( (elem, idx) => {
+            if (!elem) return;
+
             const url = `https://playfootball.games/media/competitions/${elem}.png`
 
             fetch(url)
