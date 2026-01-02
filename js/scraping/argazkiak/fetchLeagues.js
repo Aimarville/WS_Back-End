@@ -4,7 +4,6 @@ const fs = require('fs');
 const fetch = require('node-fetch');
 
 const writepath = path.join(__dirname, '../../../public/images/leagues');
-console.log(writepath);
 
 async function main() {
     try {
@@ -15,12 +14,8 @@ async function main() {
         const content = await fsP.readFile(path.join(__dirname, "leagues.txt"), "utf8");
         const data = content.split("\r\n");
 
-        console.log(data);
-
         data.forEach( (elem, idx) => {
             const url = `https://playfootball.games/media/competitions/${elem}.png`
-
-            console.log(`${elem}.png`);
 
             fetch(url)
                 .then(res => {
