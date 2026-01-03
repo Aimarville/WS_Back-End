@@ -1,0 +1,392 @@
+{
+  "1": {
+    "teamName": "West Ham United",
+    "stadium": "London Stadium",
+    "country": "England"
+  },
+  "3": {
+    "teamName": "Sunderland",
+    "stadium": "Stadium of Light",
+    "country": "England"
+  },
+  "6": {
+    "teamName": "Tottenham Hotspur",
+    "stadium": "Tottenham Hotspur Stadium",
+    "country": "England"
+  },
+  "8": {
+    "teamName": "Liverpool",
+    "stadium": "Anfield",
+    "country": "England"
+  },
+  "9": {
+    "teamName": "Manchester City",
+    "stadium": "Etihad Stadium",
+    "country": "England"
+  },
+  "11": {
+    "teamName": "Fulham",
+    "stadium": "Craven Cottage",
+    "country": "England"
+  },
+  "13": {
+    "teamName": "Everton",
+    "stadium": "Hill Dickinson Stadium",
+    "country": "England"
+  },
+  "14": {
+    "teamName": "Manchester United",
+    "stadium": "Old Trafford",
+    "country": "England"
+  },
+  "15": {
+    "teamName": "Aston Villa",
+    "stadium": "Villa Park",
+    "country": "England"
+  },
+  "18": {
+    "teamName": "Chelsea",
+    "stadium": "Stamford Bridge",
+    "country": "England"
+  },
+  "19": {
+    "teamName": "Arsenal",
+    "stadium": "Emirates Stadium",
+    "country": "England"
+  },
+  "20": {
+    "teamName": "Newcastle United",
+    "stadium": "St James' Park",
+    "country": "England"
+  },
+  "27": {
+    "teamName": "Burnley",
+    "stadium": "Turf Moor",
+    "country": "England"
+  },
+  "29": {
+    "teamName": "Wolverhampton Wanderers",
+    "stadium": "Molineux Stadium",
+    "country": "England"
+  },
+  "36": {
+    "teamName": "Celta Vigo",
+    "stadium": "Balaídos (Abanca-Balaídos)",
+    "country": "Spain"
+  },
+  "37": {
+    "teamName": "AS Roma",
+    "stadium": "Stadio Olimpico",
+    "country": "Italy"
+  },
+  "43": {
+    "teamName": "Lazio",
+    "stadium": "Stadio Olimpico",
+    "country": "Italy"
+  },
+  "44": {
+    "teamName": "Olympique de Marseille",
+    "stadium": "Stade Vélodrome",
+    "country": "France"
+  },
+  "51": {
+    "teamName": "Crystal Palace",
+    "stadium": "Selhurst Park",
+    "country": "England"
+  },
+  "52": {
+    "teamName": "AFC Bournemouth",
+    "stadium": "Vitality Stadium",
+    "country": "England"
+  },
+  "59": {
+    "teamName": "FC Nantes",
+    "stadium": "Stade de la Beaujoire",
+    "country": "France"
+  },
+  "63": {
+    "teamName": "Nottingham Forest",
+    "stadium": "City Ground",
+    "country": "England"
+  },
+  "71": {
+    "teamName": "Leeds United",
+    "stadium": "Elland Road",
+    "country": "England"
+  },
+  "78": {
+    "teamName": "Brighton & Hove Albion",
+    "stadium": "American Express Stadium",
+    "country": "England"
+  },
+  "79": {
+    "teamName": "Olympique Lyonnais",
+    "stadium": "Groupama Stadium",
+    "country": "France"
+  },
+  "83": {
+    "teamName": "FC Barcelona",
+    "stadium": "Spotify Camp Nou",
+    "country": "Spain"
+  },
+  "93": {
+    "teamName": "Real Oviedo",
+    "stadium": "Estadio Carlos Tartiere",
+    "country": "Spain"
+  },
+  "102": {
+    "teamName": "Genoa",
+    "stadium": "Stadio Luigi Ferraris",
+    "country": "Italy"
+  },
+  "106": {
+    "teamName": "Getafe",
+    "stadium": "Coliseum (Coliseum Alfonso Pérez)",
+    "country": "Spain"
+  },
+  "109": {
+    "teamName": "Fiorentina",
+    "stadium": "Stadio Artemio Franchi",
+    "country": "Italy"
+  },
+  "113": {
+    "teamName": "AC Milan",
+    "stadium": "San Siro (Stadio Giuseppe Meazza)",
+    "country": "Italy"
+  },
+  "214": {
+    "teamName": "Valencia",
+    "stadium": "Mestalla",
+    "country": "Spain"
+  },
+  "231": {
+    "teamName": "Girona",
+    "stadium": "Estadi Montilivi",
+    "country": "Spain"
+  },
+  "236": {
+    "teamName": "Brentford",
+    "stadium": "Gtech Community Stadium",
+    "country": "England"
+  },
+  "266": {
+    "teamName": "Stade Brestois 29",
+    "stadium": "Stade Francis-Le Blé",
+    "country": "France"
+  },
+  "268": {
+    "teamName": "Como 1907",
+    "stadium": "Stadio Giuseppe Sinigaglia",
+    "country": "Italy"
+  },
+  "271": {
+    "teamName": "RC Lens",
+    "stadium": "Stade Bollaert-Delelis",
+    "country": "France"
+  },
+  "289": {
+    "teamName": "Toulouse",
+    "stadium": "Stadium de Toulouse",
+    "country": "France"
+  },
+  "346": {
+    "teamName": "Udinese",
+    "stadium": "Bluenergy Stadium (Stadio Friuli)",
+    "country": "Italy"
+  },
+  "377": {
+    "teamName": "Rayo Vallecano",
+    "stadium": "Estadio de Vallecas",
+    "country": "Spain"
+  },
+  "398": {
+    "teamName": "Parma",
+    "stadium": "Stadio Ennio Tardini",
+    "country": "Italy"
+  },
+  "450": {
+    "teamName": "OGC Nice",
+    "stadium": "Allianz Riviera",
+    "country": "France"
+  },
+  "459": {
+    "teamName": "Osasuna",
+    "stadium": "El Sadar",
+    "country": "Spain"
+  },
+  "485": {
+    "teamName": "Real Betis",
+    "stadium": "Estadio Benito Villamarín",
+    "country": "Spain"
+  },
+  "528": {
+    "teamName": "RCD Espanyol",
+    "stadium": "RCDE Stadium",
+    "country": "Spain"
+  },
+  "585": {
+    "teamName": "Cagliari",
+    "stadium": "Unipol Domus",
+    "country": "Italy"
+  },
+  "591": {
+    "teamName": "Paris Saint-Germain",
+    "stadium": "Parc des Princes",
+    "country": "France"
+  },
+  "594": {
+    "teamName": "Real Sociedad",
+    "stadium": "Reale Arena",
+    "country": "Spain"
+  },
+  "597": {
+    "teamName": "Napoli",
+    "stadium": "Stadio Diego Armando Maradona",
+    "country": "Italy"
+  },
+  "598": {
+    "teamName": "Stade Rennais",
+    "stadium": "Roazhon Park",
+    "country": "France"
+  },
+  "613": {
+    "teamName": "Torino",
+    "stadium": "Stadio Olimpico Grande Torino",
+    "country": "Italy"
+  },
+  "625": {
+    "teamName": "Juventus",
+    "stadium": "Allianz Stadium",
+    "country": "Italy"
+  },
+  "645": {
+    "teamName": "Mallorca",
+    "stadium": "Estadi Mallorca Son Moix",
+    "country": "Spain"
+  },
+  "676": {
+    "teamName": "Sevilla",
+    "stadium": "Ramón Sánchez Pizjuán",
+    "country": "Spain"
+  },
+  "686": {
+    "teamName": "Strasbourg",
+    "stadium": "Stade de la Meinau",
+    "country": "France"
+  },
+  "690": {
+    "teamName": "Lille",
+    "stadium": "Decathlon Arena – Stade Pierre-Mauroy",
+    "country": "France"
+  },
+  "708": {
+    "teamName": "Atalanta",
+    "stadium": "Gewiss Stadium",
+    "country": "Italy"
+  },
+  "776": {
+    "teamName": "Angers",
+    "stadium": "Stade Raymond Kopa",
+    "country": "France"
+  },
+  "1055": {
+    "teamName": "Le Havre",
+    "stadium": "Stade Océane",
+    "country": "France"
+  },
+  "1072": {
+    "teamName": "Pisa",
+    "stadium": "Arena Garibaldi – Stadio Romeo Anconetani",
+    "country": "Italy"
+  },
+  "1099": {
+    "teamName": "Elche",
+    "stadium": "Estadio Manuel Martínez Valero",
+    "country": "Spain"
+  },
+  "1123": {
+    "teamName": "Hellas Verona",
+    "stadium": "Stadio Marc'Antonio Bentegodi",
+    "country": "Italy"
+  },
+  "2714": {
+    "teamName": "Sassuolo",
+    "stadium": "Mapei Stadium – Città del Tricolore",
+    "country": "Italy"
+  },
+  "2930": {
+    "teamName": "Inter",
+    "stadium": "San Siro (Stadio Giuseppe Meazza)",
+    "country": "Italy"
+  },
+  "2975": {
+    "teamName": "Deportivo Alavés",
+    "stadium": "Mendizorrotza",
+    "country": "Spain"
+  },
+  "3457": {
+    "teamName": "Levante",
+    "stadium": "Estadi Ciutat de València",
+    "country": "Spain"
+  },
+  "3468": {
+    "teamName": "Real Madrid",
+    "stadium": "Santiago Bernabéu",
+    "country": "Spain"
+  },
+  "3477": {
+    "teamName": "Villarreal",
+    "stadium": "Estadio de la Cerámica",
+    "country": "Spain"
+  },
+  "3513": {
+    "teamName": "FC Metz",
+    "stadium": "Stade Saint-Symphorien",
+    "country": "France"
+  },
+  "3682": {
+    "teamName": "AJ Auxerre",
+    "stadium": "Stade de l'Abbé-Deschamps",
+    "country": "France"
+  },
+  "4508": {
+    "teamName": "Paris FC",
+    "stadium": "Stade Charléty",
+    "country": "France"
+  },
+  "6789": {
+    "teamName": "AS Monaco",
+    "stadium": "Stade Louis II",
+    "country": "France"
+  },
+  "7790": {
+    "teamName": "Lecce",
+    "stadium": "Stadio Via del Mare",
+    "country": "Italy"
+  },
+  "7980": {
+    "teamName": "Atlético Madrid",
+    "stadium": "Riyadh Air Metropolitano",
+    "country": "Spain"
+  },
+  "8513": {
+    "teamName": "Bologna",
+    "stadium": "Stadio Renato Dall'Ara",
+    "country": "Italy"
+  },
+  "9257": {
+    "teamName": "Lorient",
+    "stadium": "Stade du Moustoir",
+    "country": "France"
+  },
+  "10722": {
+    "teamName": "Cremonese",
+    "stadium": "Stadio Giovanni Zini",
+    "country": "Italy"
+  },
+  "13258": {
+    "teamName": "Athletic Club",
+    "stadium": "San Mamés",
+    "country": "Spain"
+  }
+}
