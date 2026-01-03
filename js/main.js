@@ -32,7 +32,7 @@ function getSolution(players, solutionArray, difference_In_Days) {
     return solutionPlayer;
 }
 
-Promise.all([fetchJSON("../json/fullplayers25.json"), fetchJSON("../json/solution25.json")]).then(
+Promise.all([fetchJSON("/json/fullplayers25.json"), fetchJSON("/json/solution25.json")]).then(
   (values) => {
 
     let solution;
@@ -51,7 +51,7 @@ Promise.all([fetchJSON("../json/fullplayers25.json"), fetchJSON("../json/solutio
 
     console.log(game.solution);
 
-    document.getElementById("mistery").src = `https://playfootball.games/media/players/${game.solution.id % 32}/${game.solution.id}.png`;
+    document.getElementById("mistery").src = `/images/players/${game.solution.id}.png`;
 
     const myInput = document.getElementById('myInput');
 

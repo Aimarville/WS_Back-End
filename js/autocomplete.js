@@ -34,7 +34,7 @@ function autocomplete(inp, game) {
 
                 b = document.createElement("DIV");
                 b.classList.add('flex', 'items-start', 'gap-x-3', 'leading-tight', 'uppercase', 'text-sm');
-                b.innerHTML = `<img src="https://cdn.sportmonks.com/images/soccer/teams/${players[i].teamId % 32}/${players[i].teamId}.png"  width="28" height="28">`;
+                b.innerHTML = `<img src="/images/teams/${players[i].teamId}.png"  width="28" height="28">`;
 
                 b.innerHTML += `<div class='self-center'>`;
                 let nameHTML = parts.map(part => {
