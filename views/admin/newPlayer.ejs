@@ -1,0 +1,38 @@
+<h1>Jokalari berria sortu</h1>
+
+<% if (error) { %>
+    <p style="color:red;"><%= error %></p>
+<% } %>
+
+<% if (message) { %>
+    <p style="color:blue;"><%= message %></p>
+<% } %>
+
+<form method="POST" action="/admin/players/new">
+    <div>
+        <label>ID (API):
+            <input type="number" name="id" required>
+        </label>
+    </div>
+
+    <div>
+        <label>Name:
+            <input type="text" name="name" required>
+        </label>
+    </div>
+
+    <div>
+        <label>Team ID:
+            <input type="number" name="teamId" required>
+        </label>
+    </div>
+
+    <div>
+        <label>League ID:
+            <input type="number" name="leagueId" required>
+        </label>
+    </div>
+
+    <button type="submit">Sortu</button>
+    <a href="/admin">Itzuli</a>
+</form>

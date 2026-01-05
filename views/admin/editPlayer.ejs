@@ -1,0 +1,32 @@
+<h1>Jokalaria editatu</h1>
+
+<% if (error) { %>
+    <p style="color:red;"><%= error %></p>
+<% } %>
+
+<% if (message) { %>
+    <p style="color:blue;"><%= message %></p>
+<% } %>
+
+<form method="POST" action="/admin/players/edit/<%= player.id %>?_method=PUT">
+    <div>
+        <label>Name:
+            <input type="text" name="name" value="<%= player.name %>" required>
+        </label>
+    </div>
+
+    <div>
+        <label>Team ID:
+            <input type="number" name="teamId" value="<%= player.teamId %>" required>
+        </label>
+    </div>
+
+    <div>
+        <label>League ID:
+            <input type="number" name="leagueId" value="<%= player.leagueId %>" required>
+        </label>
+    </div>
+
+    <button type="submit">Gorde aldaketak</button>
+    <a href="/admin">Itzuli</a>
+</form>

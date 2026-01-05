@@ -7,6 +7,8 @@ const { isAdmin } = require('../middleware/adminMiddleware');
 
 router.post('/register', authController.register);
 
+router.get('/login', authController.getLoginView);
+
 router.post('/login', authController.login);
 
 router.get('/logout', authController.logout);

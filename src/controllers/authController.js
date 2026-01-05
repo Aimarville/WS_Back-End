@@ -26,6 +26,10 @@ exports.register = async (req, res) => {
         res.status(500).json({error: "Errorea erabiltzailea erregistratzean"});
     }
 }
+// GET /login
+exports.getLoginView = (req, res) => {
+    res.render('auth/login', { error: null });
+}
 
 // POST /login
 exports.login = async (req, res) => {
@@ -34,12 +38,14 @@ exports.login = async (req, res) => {
         const user = await User.findOne({email});
 
         if (!user) {
-            return res.status(400).json({error: "Kredentzialak ez dira baliozkoak"});
+            res.render('auth/login', { error: "Kredentzialak ez dira baliozkoak" });
+            return;
         }
 
         const isMatch = await user.comparePassword(password);
         if (!isMatch) {
-            return res.status(400).json({error: "Kredentzialak ez dira baliozkoak"});
+            res.render('auth/login', { error: "Kredentzialak ez dira baliozkoak" });
+            return;
         }
 
         req.session.userId = {
@@ -47,9 +53,9 @@ exports.login = async (req, res) => {
             role: user.role
         };
 
-        res.status(200).json({message: "Ondo logeatuta"});
+        res.redirect('/admin');
     } catch (error) {
-        res.status(500).json({error: "Errorea saioa hastean"});
+        res.render('auth/login', { error: "Errorea saioa hastean" });
     }
 }
 

@@ -13,7 +13,7 @@ const leaguesData = require(path.join(__dirname, '../../public/json/leagues25.js
 const generatePlayers = players =>
     players.map(player => ({
         id: player.id,
-        playerName: player.name,
+        name: player.name,
         birthDate: new Date(player.birthdate),
         nationality: player.nationality,
         teamId: player.teamId,

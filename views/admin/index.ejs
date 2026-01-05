@@ -1,0 +1,52 @@
+<h1>Admin Panela</h1>
+
+<% if (error) { %>
+    <p style="color:red;"><%= error %></p>
+<% } %>
+
+<form method="GET" action="/admin" style="margin-bottom: 20px;">
+    <label>
+        Page:
+        <input type="number" name="page" min="1" value="<%= page %>">
+    </label>
+
+    <label style="margin-left: 10px;">
+        Limit:
+        <input type="number" name="limit" min="1" max="100" value="<%= limit %>">
+    </label>
+
+    <button type="submit">Aplikatu</button>
+</form>
+
+<table>
+    <tr>
+        <th>Izena</th>
+        <th>Ekintzak</th>
+    </tr>
+
+    <% if (players.length === 0 && !error) { %>
+        <tr>
+            <td colspan="2">Ez dago jokalaririk</td>
+        </tr>
+    <% } else { %>
+        <% players.forEach(player => { %>
+            <tr>
+                <td><%= player.name %></td>
+                <td>
+                    <form action="/admin/players/edit/<%= player.id %>" method="GET" style="display:inline;">
+                        <button type="submit">Editatu</button>
+                    </form>
+                </td>
+                <td>
+                    <form action="/admin/players/delete/<%= player.id %>?_method=DELETE" method="POST" style="display:inline;" onsubmit="return confirm('Ziur zaude jokalaria ezabatu nahi duzula?');">
+                        <button type="submit">Ezabatu</button>
+                    </form>
+                </td>
+            </tr>
+        <% }) %>
+    <% } %>
+</table>
+
+<form action="/admin/players/new" method="GET" style="display:inline;">
+    <button type="submit">Jokalari berria sortu</button>
+</form>
