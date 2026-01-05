@@ -15,7 +15,7 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "dependencies": {
     "autosuggest-highlight": "^3.3.4",
@@ -27,6 +27,7 @@
     "express": "^5.2.1",
     "express-session": "^1.18.2",
     "express-validator": "^7.3.1",
+    "jest": "^30.2.0",
     "method-override": "^3.0.0",
     "mongoose": "^9.1.1",
     "node-fetch": "^2.7.0"
