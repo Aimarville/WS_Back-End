@@ -65,3 +65,44 @@ exports.logout = (req, res) => {
         res.status(200).json({message: "Saioa ondo itxi da"});
     });
 }
+
+exports.oauthLogin = async (req, res) => {
+    try{
+        const profile = req.user;
+        let email = profile.emails?.find(e => e.primary)?.value || profile.emails?.[0]?.value || null;
+        if(!email){
+            email = `${profile.username}@github.local`;
+        }
+
+        let user = await User.findOne({email});
+
+        if (!user){
+            let role = 'user';
+            const existingUser = await User.findOne();
+            if(!existingUser){
+                role = 'admin';
+            }
+
+            user = new User({
+                name : profile.displayName || profile.username || 'Oauth',
+                lastName: profile.provider,
+                email,
+                role,
+                oauthProvider: profile.provider,
+                oauthId: profile.id
+            });
+
+            await user.save();
+        }
+
+        req.session.userId = {
+            id: user._id.toString(),
+            role: user.role
+        };
+
+        res.redirect('/admin');
+    }catch (error){
+        console.error('Oauth login error: ' , error);
+        res.redirect('/auth/login');
+    }
+}

@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const session = require('express-session');
 const methodOverride = require('method-override');
+const passport = require('./src/config/passport');
 
 const config = require('./src/config/index.js');
 const authRoutes = require('./src/routes/auth.js');
@@ -11,7 +12,6 @@ const adminRoutes = require('./src/routes/admin.js');
 const connectDB = require('./src/config/database.js');
 
 const app = express();
-const PORT = 3000;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -25,11 +25,13 @@ connectDB(config.database.uri);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: config.session.secret,
     resave: false,
     saveUninitialized: false
 }));
 
+app.use(passport.initialize());
+app.use(passport.session());
 app.use('/auth', authRoutes);
 app.use('/api', playerRoutes);
 app.use('/solution', solutionRoutes);
