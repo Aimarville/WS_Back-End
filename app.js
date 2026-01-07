@@ -9,7 +9,7 @@ const authRoutes = require('./src/routes/auth.js');
 const playerRoutes = require('./src/routes/player.js');
 const solutionRoutes = require('./src/routes/solution.js');
 const adminRoutes = require('./src/routes/admin.js');
-const connectDB = require('./src/config/database.js');
+
 
 const app = express();
 
@@ -20,7 +20,7 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-connectDB(config.database.uri);
+
 
 app.use(express.static(path.join(__dirname, 'public')));
 
