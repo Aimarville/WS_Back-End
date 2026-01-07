@@ -12,7 +12,7 @@ const { body } = require('express-validator');
             };
             const next = jest.fn();
 
-            // Array bat denez exekutatu maualki
+            // Array bat denez exekutatu manualki
             await body('name').notEmpty().run(req);
             await body('teamId').notEmpty().run(req);
             await body('leagueId').notEmpty().run(req);
